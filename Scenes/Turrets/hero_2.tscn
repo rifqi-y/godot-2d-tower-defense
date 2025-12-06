@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://5bqojjeol675"]
+
+[ext_resource type="Texture2D" uid="uid://cl3koqscdn5vi" path="res://Assets/Towers/tower.png" id="1_2kic5"]
+[ext_resource type="Script" uid="uid://beov4wccfqegh" path="res://Scenes/Turrets/hero_2.gd" id="1_05hs5"]
+[ext_resource type="Texture2D" uid="uid://bnk4swmrwlmh7" path="res://Assets/Towers/Archer-Green-Right-Bow.png" id="2_05hs5"]
+
+[node name="Hero2" type="Node2D"]
+script = ExtResource("1_05hs5")
+
+[node name="Tower" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("1_2kic5")
+offset = Vector2(-8, -8)
+
+[node name="Hero" type="Sprite2D" parent="."]
+position = Vector2(-4.7683716e-07, -5.999999)
+scale = Vector2(0.64, 0.572)
+texture = ExtResource("2_05hs5")
+
+[node name="Marker2D" type="Marker2D" parent="Hero"]
+position = Vector2(15, 0)

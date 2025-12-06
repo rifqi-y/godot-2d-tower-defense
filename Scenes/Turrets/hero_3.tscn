@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dchv32fxccps4"]
+
+[ext_resource type="Texture2D" uid="uid://cl3koqscdn5vi" path="res://Assets/Towers/tower.png" id="1_c68jl"]
+[ext_resource type="Script" uid="uid://u0cm7qjccjl" path="res://Scenes/Turrets/hero_3.gd" id="1_d5w4s"]
+[ext_resource type="Texture2D" uid="uid://d07siycnfunsm" path="res://Assets/Towers/Human-Soldier-Cyan.png" id="2_d5w4s"]
+
+[node name="Hero3" type="Node2D"]
+script = ExtResource("1_d5w4s")
+
+[node name="Tower" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("1_c68jl")
+offset = Vector2(-8, -8)
+
+[node name="Hero" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+scale = Vector2(0.625, 0.5)
+texture = ExtResource("2_d5w4s")
+
+[node name="Marker2D" type="Marker2D" parent="Hero"]
+position = Vector2(15, 0)

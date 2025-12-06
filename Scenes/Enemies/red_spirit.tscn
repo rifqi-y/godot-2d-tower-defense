@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dl8jgjripungt"]
+
+[ext_resource type="Texture2D" uid="uid://dd11gofc36ttb" path="res://Assets/Enemies/Santelmo-Enemy.png" id="1_4tex7"]
+[ext_resource type="Script" uid="uid://do5w7le8qonq8" path="res://Scenes/Enemies/red_spirit.gd" id="1_yjmmf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yjmmf"]
+
+[node name="RedSpirit" type="PathFollow2D"]
+scale = Vector2(0.5, 0.5)
+loop = false
+script = ExtResource("1_yjmmf")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1_4tex7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_yjmmf")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bucx7m45tmmif"]
+
+[ext_resource type="Script" uid="uid://bctolg1dn3shk" path="res://scene_handler_1.gd" id="1_n2krd"]
+[ext_resource type="PackedScene" uid="uid://c81gtgr4l1dpn" path="res://Scenes/UIScenes/main_menu.tscn" id="2_32iqj"]
+
+[node name="SceneHandler" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_n2krd")
+
+[node name="MainMenu" parent="." instance=ExtResource("2_32iqj")]
+layout_mode = 1
