@@ -86,5 +86,6 @@ func verify_and_build():
 	if build_valid:
 		var new_tower = load("res://Scenes/Turrets/" + build_type + ".tscn").instantiate()
 		new_tower.position = build_location
+		new_tower.built = true
 		map_node.get_node("Tower").add_child(new_tower, true)
 		map_node.get_node("TileMapLayer2").set_cell(build_tile, 0, Vector2i(1,0))

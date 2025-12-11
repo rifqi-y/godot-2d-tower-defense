@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://5bqojjeol675"]
+[gd_scene load_steps=5 format=3 uid="uid://5bqojjeol675"]
 
 [ext_resource type="Texture2D" uid="uid://cl3koqscdn5vi" path="res://Assets/Towers/tower.png" id="1_2kic5"]
 [ext_resource type="Script" uid="uid://beov4wccfqegh" path="res://Scenes/Turrets/hero_2.gd" id="1_05hs5"]
 [ext_resource type="Texture2D" uid="uid://bnk4swmrwlmh7" path="res://Assets/Towers/Archer-Green-Right-Bow.png" id="2_05hs5"]
 
-[node name="Hero2" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_05hs5"]
+
+[node name="hero_2" type="Node2D"]
 script = ExtResource("1_05hs5")
 
 [node name="Tower" type="Sprite2D" parent="."]
@@ -19,3 +21,11 @@ texture = ExtResource("2_05hs5")
 
 [node name="Marker2D" type="Marker2D" parent="Hero"]
 position = Vector2(15, 0)
+
+[node name="Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_05hs5")
+
+[connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]

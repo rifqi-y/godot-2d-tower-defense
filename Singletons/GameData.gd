@@ -5,7 +5,7 @@ var tower_data = {
 	"hero_1":{
 		"damage": 20,
 		"rof": 1,
-		"range": 75,
+		"range": 80,
 		"cost": 50
 	},
 	

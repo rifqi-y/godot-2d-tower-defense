@@ -1,6 +1,6 @@
 extends PathFollow2D
 
-var speed = 75
+var speed = 65
 
 func _physics_process(delta: float) -> void:
 	move(delta)
