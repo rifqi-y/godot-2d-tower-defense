@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dl8jgjripungt"]
+[gd_scene load_steps=5 format=3 uid="uid://dl8jgjripungt"]
 
 [ext_resource type="Texture2D" uid="uid://dd11gofc36ttb" path="res://Assets/Enemies/Santelmo-Enemy.png" id="1_4tex7"]
 [ext_resource type="Script" uid="uid://do5w7le8qonq8" path="res://Scenes/Enemies/red_spirit.gd" id="1_yjmmf"]
+[ext_resource type="Texture2D" uid="uid://3qhujhlrfumf" path="res://Assets/UI/HPbar.jpg" id="3_jvil4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yjmmf"]
 
@@ -17,3 +18,15 @@ texture = ExtResource("1_4tex7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_yjmmf")
+
+[node name="HeatlhBar" type="TextureProgressBar" parent="."]
+offset_left = -15.0
+offset_top = -20.0
+offset_right = 15.0
+offset_bottom = -17.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = ExtResource("3_jvil4")
+texture_progress = ExtResource("3_jvil4")
+tint_under = Color(0.18717614, 0.18717614, 0.18717614, 1)
+tint_progress = Color(0, 0.6509804, 0, 1)
