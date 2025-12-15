@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@onready var hp_bar = get_node("InfoBar/H/HP")
+
 func set_tower_preview(tower_type, mouse_position):
 	var drag_tower = load("res://Scenes/Turrets/" + tower_type + ".tscn").instantiate()
 	drag_tower.set_name("DragTower")
@@ -52,3 +54,14 @@ func _on_fast_forward_pressed() -> void:
 		Engine.set_time_scale(1.0)
 	else:
 		Engine.set_time_scale(2.0)
+		
+func update_health_bar(base_health):
+	var hp_bar_tween = create_tween()
+	hp_bar_tween.tween_property(hp_bar, "value", base_health, 0.1).set_trans(Tween.TRANS_LINEAR). set_ease(Tween.EASE_IN_OUT)
+	if base_health >= 60:
+		hp_bar.set_tint_progress("4eff15")
+	elif base_health <= 60 and base_health >= 25:
+		hp_bar.set_tint_progress("e1be32")
+	else:
+		hp_bar.set_tint_progress("e11e1e")
+	

@@ -13,11 +13,11 @@ script = ExtResource("1_yjmmf")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("1_4tex7")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 shape = SubResource("CircleShape2D_yjmmf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4tex7")
 
 [node name="HeatlhBar" type="TextureProgressBar" parent="."]
 offset_left = -15.0
@@ -30,3 +30,6 @@ texture_under = ExtResource("3_jvil4")
 texture_progress = ExtResource("3_jvil4")
 tint_under = Color(0.18717614, 0.18717614, 0.18717614, 1)
 tint_progress = Color(0, 0.6509804, 0, 1)
+
+[node name="Impact" type="Marker2D" parent="."]
+position = Vector2(-10, -10)

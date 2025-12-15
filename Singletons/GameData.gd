@@ -6,14 +6,16 @@ var tower_data = {
 		"damage": 20,
 		"rof": 1,
 		"range": 80,
-		"cost": 50
+		"cost": 50,
+		"category": "arrow"
 	},
 	
 	"hero_2":{
 		"damage": 50,
 		"rof": 1,
 		"range": 120,
-		"cost": 125
+		"cost": 125,
+		"category": "arrow"
 	}
 	
 }

@@ -6,4 +6,5 @@
 font = ExtResource("1_3mkdg")
 font_size = 25
 outline_size = 10
-outline_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+outline_color = Color(0.043137256, 0.043137256, 0.043137256, 0.7058824)
+shadow_color = Color(0, 0, 0, 0.7058824)

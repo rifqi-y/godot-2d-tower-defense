@@ -1,0 +1,71 @@
+[gd_scene load_steps=16 format=3 uid="uid://ciykuoou18o6k"]
+
+[ext_resource type="Texture2D" uid="uid://b37ak2u0rjgk3" path="res://Assets/Effects/blood1.png" id="1_41dji"]
+[ext_resource type="Texture2D" uid="uid://dtp0y8rmqht4y" path="res://Assets/Effects/blood2.png" id="2_daprq"]
+[ext_resource type="Texture2D" uid="uid://c1kwpqsa7arln" path="res://Assets/Effects/blood3.png" id="3_c43ml"]
+[ext_resource type="Texture2D" uid="uid://bj0nq35ooh15t" path="res://Assets/Effects/blood4.png" id="4_r5fkh"]
+[ext_resource type="Texture2D" uid="uid://c6epgospt04ai" path="res://Assets/Effects/blood5.png" id="5_tr64x"]
+[ext_resource type="Texture2D" uid="uid://brlerc2c1pxdq" path="res://Assets/Effects/blood6.png" id="6_ufewb"]
+[ext_resource type="Texture2D" uid="uid://dogmw3rwhhgn1" path="res://Assets/Effects/blood7.png" id="7_uxwkv"]
+[ext_resource type="Texture2D" uid="uid://bwnoa0wbs1e8f" path="res://Assets/Effects/blood8.png" id="8_t6g2f"]
+[ext_resource type="Texture2D" uid="uid://cgfrsle1sn4tx" path="res://Assets/Effects/blood9.png" id="9_gsodk"]
+[ext_resource type="Texture2D" uid="uid://b3jbvpris4owe" path="res://Assets/Effects/blood10.png" id="10_6j50d"]
+[ext_resource type="Texture2D" uid="uid://lnc2nxktxdsm" path="res://Assets/Effects/blood11.png" id="11_8tfl5"]
+[ext_resource type="Texture2D" uid="uid://kqf5yi0l868x" path="res://Assets/Effects/blood12.png" id="12_5c2ir"]
+[ext_resource type="Texture2D" uid="uid://d0eixgsdk2u3h" path="res://Assets/Effects/blood13.png" id="13_uy4m0"]
+[ext_resource type="Script" uid="uid://b01bgu0mdg1ap" path="res://Scenes/SupportScenes/projectile_impact.gd" id="14_daprq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2k5ai"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_41dji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_daprq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c43ml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r5fkh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tr64x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ufewb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_uxwkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_t6g2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gsodk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6j50d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8tfl5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5c2ir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_uy4m0")
+}],
+"loop": false,
+"name": &"impact",
+"speed": 5.0
+}]
+
+[node name="ProjectileImpact" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_2k5ai")
+animation = &"impact"
+speed_scale = 4.0
+script = ExtResource("14_daprq")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
