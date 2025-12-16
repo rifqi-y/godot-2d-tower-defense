@@ -6,7 +6,7 @@ var tower_data = {
 		"damage": 20,
 		"rof": 1,
 		"range": 80,
-		"cost": 50,
+		"cost": 25,
 		"category": "arrow"
 	},
 	

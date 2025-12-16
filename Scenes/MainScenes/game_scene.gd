@@ -10,15 +10,23 @@ var build_location = false
 var build_tile
 var build_type
 var base_health = 100
+var base_money = 100
 
 var current_wave = 0
 var enemies_in_wave = 0
 
+@onready var currency_label = $UI/InfoBar/H/Money
+
 func _ready() -> void:
 	map_node = get_node("Map1")
 	
+	update_currency_label()
+	
 	for i in get_tree().get_nodes_in_group("build_button"):
 		i.pressed.connect(initiate_build_mode.bind(i.name))
+		
+	for enemy in map_node.get_node("Path2D").get_children():
+		enemy.connect("enemy_killed", on_enemy_killed)
 	
 func _process(delta: float) -> void:
 	if build_mode:
@@ -34,7 +42,6 @@ func _unhandled_input(event: InputEvent) -> void:
 ##
 ## Wave Function
 ##
-
 func start_next_wave():
 	var wave_data = retrieve_wave_data()
 	await(get_tree().create_timer(0.2).timeout) ## Padding between waves
@@ -50,6 +57,7 @@ func spawn_enemies(wave_data):
 	for i in wave_data:
 		var new_enemy = load("res://Scenes/Enemies/" + i[0] + ".tscn").instantiate()
 		new_enemy.connect("base_damage", on_base_damage)
+		new_enemy.connect("enemy_killed", on_enemy_killed)
 		map_node.get_node("Path2D").add_child(new_enemy, true)
 		await(get_tree().create_timer(i[1]).timeout)
 
@@ -88,13 +96,21 @@ func cancel_build_mode():
 func verify_and_build():
 	
 	if build_valid:
-		var new_tower = load("res://Scenes/Turrets/" + build_type + ".tscn").instantiate()
-		new_tower.position = build_location
-		new_tower.built = true
-		new_tower.type = build_type
-		new_tower.category = GameData.tower_data[build_type]["category"]
-		map_node.get_node("Tower").add_child(new_tower, true)
-		map_node.get_node("TileMapLayer2").set_cell(build_tile, 0, Vector2i(1,0))
+		var tower_cost = GameData.tower_data[build_type]["cost"]
+		if base_money >= tower_cost:
+			var new_tower = load("res://Scenes/Turrets/" + build_type + ".tscn").instantiate()
+			new_tower.position = build_location
+			new_tower.built = true
+			new_tower.type = build_type
+			new_tower.category = GameData.tower_data[build_type]["category"]
+			map_node.get_node("Tower").add_child(new_tower, true)
+			map_node.get_node("TileMapLayer2").set_cell(build_tile, 0, Vector2i(1,0))
+			
+			base_money -= tower_cost
+			update_currency_label()
+			
+		else:
+			print("Not enough money!")
 		
 func on_base_damage(damage):
 	base_health -= damage
@@ -106,3 +122,10 @@ func on_base_damage(damage):
 		emit_signal("game_finished", false)
 	else:
 		get_node("UI").update_health_bar(base_health)
+		
+func update_currency_label():
+	currency_label.text = str(base_money)
+	
+func on_enemy_killed(reward):
+	base_money += reward
+	update_currency_label()

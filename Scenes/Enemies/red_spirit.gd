@@ -1,9 +1,11 @@
 extends PathFollow2D
 
 signal base_damage(damage)
+signal enemy_killed(reward)
 
 var speed = 65
 var hp = 75
+var reward = 50
 
 @onready var health_bar = get_node("HeatlhBar")
 @onready var impact_area = get_node("Impact")
@@ -42,6 +44,7 @@ func impact():
 	impact_area.add_child(new_impact)
 	
 func on_destroy():
+	emit_signal("enemy_killed", reward)
 	get_node("CharacterBody2D").queue_free()
 	await(get_tree().create_timer(0.2).timeout)
 	self.queue_free()

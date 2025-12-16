@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cxjv8iovwlh1w" path="res://Assets/Towers/Human-Worker-Cyan.png" id="3_2u2le"]
 [ext_resource type="Script" uid="uid://c0vpdkqv5prqy" path="res://Scenes/MainScenes/ui.gd" id="3_g2kuy"]
 [ext_resource type="Texture2D" uid="uid://bnk4swmrwlmh7" path="res://Assets/Towers/Archer-Green-Right-Bow.png" id="4_g2kuy"]
-[ext_resource type="Texture2D" uid="uid://d3wyroi4xggqm" path="res://Assets/Icons/Play.png" id="7_674w2"]
-[ext_resource type="Texture2D" uid="uid://skjwewvrtp5g" path="res://Assets/Icons/Pause.png" id="8_a0jnf"]
-[ext_resource type="Texture2D" uid="uid://dhy5gsgwoeof7" path="res://Assets/Icons/DoubleSpeed.png" id="9_clpeu"]
+[ext_resource type="Texture2D" uid="uid://bwb0hjwvy6fll" path="res://Assets/Icons/right.png" id="7_m8rg1"]
+[ext_resource type="Texture2D" uid="uid://cq7f2008nuycl" path="res://Assets/Icons/Pause1.png" id="8_0h1f8"]
+[ext_resource type="Texture2D" uid="uid://dxppvrdvy78vs" path="res://Assets/Icons/fastForward.png" id="9_sl8sw"]
 [ext_resource type="LabelSettings" uid="uid://tiyan25aa4gb" path="res://Assets/Fonts/kf_40_01.tres" id="10_m8rg1"]
 [ext_resource type="Texture2D" uid="uid://dwr4n08rcygfl" path="res://Assets/Icons/home.png" id="11_0h1f8"]
 [ext_resource type="Texture2D" uid="uid://3qhujhlrfumf" path="res://Assets/UI/HPbar.jpg" id="12_sl8sw"]
@@ -85,12 +85,12 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -65.0
-offset_top = -45.0
-offset_right = -11.0
-offset_bottom = -5.0
+offset_left = -204.0
+offset_top = -100.0
 grow_horizontal = 0
 grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(200, 100)
 
 [node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControl"]
 process_mode = 3
@@ -99,16 +99,16 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 toggle_mode = true
-texture_normal = ExtResource("7_674w2")
-texture_pressed = ExtResource("8_a0jnf")
-stretch_mode = 0
+texture_normal = ExtResource("7_m8rg1")
+texture_pressed = ExtResource("8_0h1f8")
+stretch_mode = 6
 
 [node name="FastForward" type="TextureButton" parent="UI/HUD/GameControl"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
-texture_normal = ExtResource("9_clpeu")
+texture_normal = ExtResource("9_sl8sw")
 stretch_mode = 0
 
 [node name="InfoBar" type="ColorRect" parent="UI"]
