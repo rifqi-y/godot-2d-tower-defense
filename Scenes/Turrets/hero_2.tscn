@@ -1,10 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://5bqojjeol675"]
+[gd_scene load_steps=9 format=3 uid="uid://5bqojjeol675"]
 
 [ext_resource type="Texture2D" uid="uid://cl3koqscdn5vi" path="res://Assets/Towers/tower.png" id="1_2kic5"]
 [ext_resource type="Script" uid="uid://beov4wccfqegh" path="res://Scenes/Turrets/hero_2.gd" id="1_05hs5"]
 [ext_resource type="Texture2D" uid="uid://bnk4swmrwlmh7" path="res://Assets/Towers/Archer-Green-Right-Bow.png" id="2_05hs5"]
+[ext_resource type="Texture2D" uid="uid://dkrmplifrwme4" path="res://Assets/Effects/1.png" id="4_arr4q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_05hs5"]
+
+[sub_resource type="Animation" id="Animation_x05yi"]
+resource_name = "fire"
+length = 0.17
+step = 0.07
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hero/Marker2D/MuzzleFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_e5sbm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hero/Marker2D/MuzzleFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_svuo3"]
+_data = {
+&"RESET": SubResource("Animation_e5sbm"),
+&"fire": SubResource("Animation_x05yi")
+}
 
 [node name="hero_2" type="Node2D"]
 script = ExtResource("1_05hs5")
@@ -22,10 +61,21 @@ texture = ExtResource("2_05hs5")
 [node name="Marker2D" type="Marker2D" parent="Hero"]
 position = Vector2(15, 0)
 
+[node name="MuzzleFlash" type="Sprite2D" parent="Hero/Marker2D"]
+visible = false
+position = Vector2(10, 0)
+rotation = 1.5707964
+texture = ExtResource("4_arr4q")
+
 [node name="Range" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
 shape = SubResource("CircleShape2D_05hs5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_svuo3")
+}
 
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]

@@ -45,7 +45,6 @@ func _on_pause_play_pressed() -> void:
 	else:
 		get_tree().paused = true
 
-
 func _on_fast_forward_pressed() -> void:
 	if get_parent().build_mode:
 		get_parent().cancel_build_mode()

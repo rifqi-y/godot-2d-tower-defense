@@ -41,7 +41,7 @@ func start_next_wave():
 	spawn_enemies(wave_data)
 	
 func retrieve_wave_data():
-	var wave_data = [["red_spirit", 0.7], ["red_spirit", 0.1],["red_spirit", 0.7], ["red_spirit", 0.1], ["red_spirit", 0.7], ["red_spirit", 0.1]]
+	var wave_data = [["red_spirit", 0.7], ["red_spirit", 0.7],["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7]]
 	current_wave += 1
 	enemies_in_wave = wave_data.size()
 	return wave_data
