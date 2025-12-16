@@ -1,0 +1,121 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5vtd3n5uslqq"]
+
+[ext_resource type="Texture2D" uid="uid://7fkrcvdn3pnj" path="res://Assets/UI/Arts/BackGround.png" id="1_kw7ms"]
+[ext_resource type="FontFile" uid="uid://k2cew31qd006" path="res://Assets/Fonts/Kenney Pixel.ttf" id="2_vcwsa"]
+[ext_resource type="Texture2D" uid="uid://bwwwc0tgu45ow" path="res://Assets/UI/Buttons/Buttons1.png" id="3_ran38"]
+[ext_resource type="Texture2D" uid="uid://cm2d7bfj3xrn2" path="res://Assets/UI/Buttons/Buttons2.png" id="4_anef1"]
+[ext_resource type="LabelSettings" uid="uid://tiyan25aa4gb" path="res://Assets/Fonts/kf_40_01.tres" id="5_8yhgb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_760gj"]
+font = ExtResource("2_vcwsa")
+font_size = 80
+font_color = Color(0.9999998, 0.9616614, 0.9344714, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 0.3647059)
+shadow_color = Color(0, 0, 0, 0.7058824)
+
+[node name="ResultScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="B" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_kw7ms")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -175.0
+offset_top = 50.0
+offset_right = 175.0
+offset_bottom = 200.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.90588236, 0.5921569, 0, 1)
+text = "Victory"
+label_settings = SubResource("LabelSettings_760gj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextStage" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(120, 35)
+layout_mode = 0
+offset_left = 265.0
+offset_top = 250.0
+offset_right = 385.0
+offset_bottom = 290.0
+texture_normal = ExtResource("3_ran38")
+texture_pressed = ExtResource("4_anef1")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="NextStage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next Stage"
+label_settings = ExtResource("5_8yhgb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Replay" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(120, 35)
+layout_mode = 0
+offset_left = 95.0
+offset_top = 250.0
+offset_right = 215.0
+offset_bottom = 290.0
+texture_normal = ExtResource("3_ran38")
+texture_pressed = ExtResource("4_anef1")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Replay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Replay"
+label_settings = ExtResource("5_8yhgb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenu" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(120, 35)
+layout_mode = 0
+offset_left = 440.0
+offset_top = 250.0
+offset_right = 560.0
+offset_bottom = 290.0
+texture_normal = ExtResource("3_ran38")
+texture_pressed = ExtResource("4_anef1")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Main Menu"
+label_settings = ExtResource("5_8yhgb")
+horizontal_alignment = 1
+vertical_alignment = 1
