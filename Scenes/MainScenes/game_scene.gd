@@ -12,6 +12,8 @@ var build_type
 var base_health = 100
 var base_money = 100
 
+var spawned_enemies = 0
+var enemies_alive = 0
 var current_wave = 0
 var enemies_in_wave = 0
 var total_wave = 3
@@ -56,8 +58,9 @@ func start_next_wave():
 func retrieve_wave_data():
 	if current_wave >= total_wave:
 		return []
-		
+	
 	var wave_data = [["red_spirit", 0.7], ["red_spirit", 0.7],["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7]]
+	
 	current_wave += 1
 	enemies_in_wave = wave_data.size()
 	return wave_data
@@ -68,6 +71,10 @@ func spawn_enemies(wave_data):
 		new_enemy.connect("base_damage", on_base_damage)
 		new_enemy.connect("enemy_killed", on_enemy_killed)
 		map_node.get_node("Path2D").add_child(new_enemy, true)
+		
+		spawned_enemies += 1
+		enemies_alive += 1
+		print(spawned_enemies, enemies_alive)
 		await(get_tree().create_timer(i[1]).timeout)
 
 ##
@@ -127,8 +134,14 @@ func on_base_damage(damage):
 	#if base_health < 21:
 		#preload("res://Scenes/UIScenes/main_menu.tscn")
 	
+	enemies_alive -= 1
+	print(enemies_alive)
+	
 	if base_health <= 0:
 		emit_signal("game_finished", false)
+	elif enemies_alive <= 0 and spawned_enemies == enemies_in_wave:
+		await(get_tree().create_timer(0.5).timeout)
+		emit_signal("game_finished", true)
 	else:
 		get_node("UI").update_health_bar(base_health)
 		
@@ -138,3 +151,10 @@ func update_currency_label():
 func on_enemy_killed(reward):
 	base_money += reward
 	update_currency_label()
+	
+	enemies_alive -= 1
+	print(enemies_alive)
+	
+	if spawned_enemies == enemies_in_wave and enemies_alive <= 0:
+		await(get_tree().create_timer(0.5).timeout)
+		emit_signal("game_finished", true)
