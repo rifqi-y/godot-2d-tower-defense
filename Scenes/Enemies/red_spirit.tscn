@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl8jgjripungt"]
+[gd_scene load_steps=6 format=3 uid="uid://dl8jgjripungt"]
 
 [ext_resource type="Texture2D" uid="uid://dd11gofc36ttb" path="res://Assets/Enemies/Santelmo-Enemy.png" id="1_4tex7"]
 [ext_resource type="Script" uid="uid://do5w7le8qonq8" path="res://Scenes/Enemies/red_spirit.gd" id="1_yjmmf"]
 [ext_resource type="Texture2D" uid="uid://3qhujhlrfumf" path="res://Assets/UI/HPbar.jpg" id="3_jvil4"]
+[ext_resource type="AudioStream" uid="uid://382phmq1787y" path="res://Assets/Sounds/SFX/hit_sfx.mp3" id="4_dvlq7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yjmmf"]
 
@@ -33,3 +34,7 @@ tint_progress = Color(0, 0.6509804, 0, 1)
 
 [node name="Impact" type="Marker2D" parent="."]
 position = Vector2(-10, -10)
+
+[node name="HitSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dvlq7")
+volume_db = -10.0

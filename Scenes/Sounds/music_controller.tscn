@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://difl4bunkutsn"]
+
+[ext_resource type="Script" uid="uid://cwgm7u1iawy80" path="res://Scenes/Sounds/music_controller.gd" id="1_04xkf"]
+[ext_resource type="AudioStream" uid="uid://ubyemy2nl80y" path="res://Assets/Sounds/BGM/mainmenu_bgm.mp3" id="1_wsrp1"]
+[ext_resource type="AudioStream" uid="uid://pkhktsml84ld" path="res://Assets/Sounds/BGM/stage1_bgm.mp3" id="3_gqfeh"]
+[ext_resource type="AudioStream" uid="uid://d2b1ue08xa0am" path="res://Assets/Sounds/SFX/victory_sfx.mp3" id="4_g7n75"]
+[ext_resource type="AudioStream" uid="uid://cvnk5wudl3ki5" path="res://Assets/Sounds/SFX/defeat_sfx.mp3" id="5_spq3r"]
+
+[node name="MusicController" type="Node2D"]
+script = ExtResource("1_04xkf")
+
+[node name="MainMenuBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_wsrp1")
+volume_db = -15.266
+parameters/looping = true
+
+[node name="Level1BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gqfeh")
+volume_db = -15.0
+parameters/looping = true
+
+[node name="VictorySFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_g7n75")
+
+[node name="DefeatSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_spq3r")

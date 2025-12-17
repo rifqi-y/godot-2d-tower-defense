@@ -7,6 +7,8 @@ var speed = 50
 var hp = 75
 var reward = 50
 
+@onready var hit_sfx: AudioStreamPlayer = $HitSFX
+
 @onready var health_bar = get_node("HeatlhBar")
 @onready var impact_area = get_node("Impact")
 var projectile_impact = preload("res://Scenes/SupportScenes/projectile_impact.tscn")
@@ -42,6 +44,7 @@ func impact():
 	var new_impact = projectile_impact.instantiate()
 	new_impact.position = impact_location
 	impact_area.add_child(new_impact)
+	hit_sfx.play()
 	
 func on_destroy():
 	emit_signal("enemy_killed", reward)

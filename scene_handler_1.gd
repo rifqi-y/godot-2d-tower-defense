@@ -9,7 +9,7 @@ const SPLASH_SCREEN = preload("res://Scenes/UIScenes/splash_screen_manager.tscn"
 var game_instance
 
 func _ready() -> void:
-	load_main_menu()
+	fade()
 	
 func load_main_menu():
 	var main_menu_node = get_node("MainMenu")
@@ -19,6 +19,9 @@ func load_main_menu():
 	
 	play_button.pressed.connect(on_play_pressed)
 	quit_button.pressed.connect(on_quit_pressed)
+	
+	if not MusicController.main_menu_bgm.playing:
+		MusicController.mainmenu_bgm_play()
 
 func on_play_pressed() -> void:
 	get_node("MainMenu").queue_free()
@@ -30,20 +33,29 @@ func on_quit_pressed() -> void:
 
 func unload_game(result):
 	game_instance.queue_free()
+	if MusicController.level1_bgm.playing:
+		MusicController.level1_bgm_stop()
 
 	if result:
 		show_result_screen("Victory!")
+		MusicController.victory_sfx_play()
 	else:
 		show_result_screen("Defeat!")
+		MusicController.defeat_sfx_play()
 	
 	#var main_menu_instance = MAIN_MENU.instantiate()
 	#add_child(main_menu_instance)
 	#load_main_menu()
 	
 func load_level1():
+	if MusicController.main_menu_bgm.playing:
+		MusicController.mainmenu_bgm_stop()
+		
+	MusicController.level1_bgm_play()
 	game_instance = GAME_SCENE.instantiate()
 	game_instance.connect("game_finished", unload_game)
 	add_child(game_instance)
+	
 	
 func show_level_selection():
 	var level_selection_scene = LEVEL_SELECTION.instantiate()
@@ -70,18 +82,21 @@ func show_result_screen(msg):
 	
 func on_replay_pressed():
 	remove_result_scene()
-	
-	game_instance = GAME_SCENE.instantiate()
-	game_instance.connect("game_finished", unload_game)
-	add_child(game_instance)
+	load_level1()
 	
 func remove_result_scene():
 	var result_scene = get_node("ResultScene")
 	
 	if result_scene != null:
 		result_scene.queue_free()
+		
+	if MusicController.victory_sfx.playing or MusicController.defeat_sfx.playing:
+		MusicController.victory_sfx_stop()
+		MusicController.defeat_sfx_stop()
 	
 func on_main_menu_pressed():
+	remove_result_scene()
+	
 	var main_menu_instance = MAIN_MENU.instantiate()
 	add_child(main_menu_instance)
 	load_main_menu()

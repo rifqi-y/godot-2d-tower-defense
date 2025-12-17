@@ -51,7 +51,7 @@ label_settings = SubResource("LabelSettings_760gj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NextStage" type="TextureButton" parent="."]
+[node name="SelectLevel" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(120, 35)
 layout_mode = 0
 offset_left = 265.0
@@ -62,14 +62,14 @@ texture_normal = ExtResource("3_ran38")
 texture_pressed = ExtResource("4_anef1")
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="NextStage"]
+[node name="Label" type="Label" parent="SelectLevel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Next Stage"
+text = "Select Level"
 label_settings = ExtResource("5_8yhgb")
 horizontal_alignment = 1
 vertical_alignment = 1
