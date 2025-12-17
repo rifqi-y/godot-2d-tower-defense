@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://caiblvba7u7vv"]
+
+[ext_resource type="Script" uid="uid://c8ksmislcvnav" path="res://Scenes/UIScenes/splash_screen_manager.gd" id="1_7hwf6"]
+[ext_resource type="Texture2D" uid="uid://dufavmw14rk0p" path="res://Assets/UI/Arts/logo_game.png" id="1_r80hk"]
+
+[node name="SplashScreenManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_7hwf6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0018410678, 0.0018410682, 0.0018410678, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SplashScreen" type="TextureRect" parent="CenterContainer"]
+modulate = Color(1, 1, 1, 0.48235294)
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("1_r80hk")
+expand_mode = 3

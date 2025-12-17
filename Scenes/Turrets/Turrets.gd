@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var arrow_sfx: AudioStreamPlayer = $ArrowSFX
+
 var type
 var category
 var enemy_array = []
@@ -46,6 +48,7 @@ func fire():
 	
 func fire_arrow():
 	get_node("AnimationPlayer").play("fire")
+	arrow_sfx.play()
 
 func _on_range_body_entered(body: Node2D) -> void:
 	enemy_array.append(body.get_parent())

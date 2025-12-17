@@ -13,6 +13,9 @@ config_version=5
 config/name="Tower Defense"
 run/main_scene="uid://bucx7m45tmmif"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/bg_color=Color(0.00566115, 0.005661152, 0.005661148, 1)
+boot_splash/show_image=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [autoload]

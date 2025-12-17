@@ -7,6 +7,21 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_05hs5"]
 
+[sub_resource type="Animation" id="Animation_e5sbm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hero/Marker2D/MuzzleFlash:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_x05yi"]
 resource_name = "fire"
 length = 0.17
@@ -22,21 +37,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_e5sbm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Hero/Marker2D/MuzzleFlash:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_svuo3"]
@@ -76,6 +76,8 @@ shape = SubResource("CircleShape2D_05hs5")
 libraries = {
 &"": SubResource("AnimationLibrary_svuo3")
 }
+
+[node name="ArrowSFX" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]

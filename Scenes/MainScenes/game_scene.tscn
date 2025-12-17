@@ -37,9 +37,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 583.0
-offset_top = -354.0
+offset_top = -350.0
 offset_right = 633.0
-offset_bottom = -254.0
+offset_bottom = -238.0
 grow_vertical = 0
 
 [node name="hero_1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_button"]]
@@ -60,6 +60,13 @@ texture = ExtResource("3_2u2le")
 expand_mode = 2
 stretch_mode = 3
 
+[node name="Label" type="Label" parent="UI/HUD/BuildBar"]
+layout_mode = 2
+text = "$ 25"
+label_settings = ExtResource("10_m8rg1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="hero_2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_button"]]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
@@ -77,6 +84,13 @@ offset_bottom = 26.0
 texture = ExtResource("4_g2kuy")
 expand_mode = 2
 stretch_mode = 3
+
+[node name="Label2" type="Label" parent="UI/HUD/BuildBar"]
+layout_mode = 2
+text = "$ 125"
+label_settings = ExtResource("10_m8rg1")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="GameControl" type="HBoxContainer" parent="UI/HUD"]
 layout_mode = 1

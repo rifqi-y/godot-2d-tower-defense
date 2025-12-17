@@ -1,0 +1,142 @@
+[gd_scene load_steps=7 format=3 uid="uid://cp73jy0x1g3ko"]
+
+[ext_resource type="Texture2D" uid="uid://7fkrcvdn3pnj" path="res://Assets/UI/Arts/BackGround.png" id="1_fhsqj"]
+[ext_resource type="FontFile" uid="uid://k2cew31qd006" path="res://Assets/Fonts/Kenney Pixel.ttf" id="2_1j38t"]
+[ext_resource type="Texture2D" uid="uid://bwwwc0tgu45ow" path="res://Assets/UI/Buttons/Buttons1.png" id="3_aeinr"]
+[ext_resource type="Texture2D" uid="uid://cm2d7bfj3xrn2" path="res://Assets/UI/Buttons/Buttons2.png" id="4_sp7b5"]
+[ext_resource type="LabelSettings" uid="uid://tiyan25aa4gb" path="res://Assets/Fonts/kf_40_01.tres" id="5_0dma7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k0e2r"]
+font = ExtResource("2_1j38t")
+font_size = 80
+font_color = Color(0.9999998, 0.9616614, 0.9344714, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 0.3647059)
+shadow_color = Color(0, 0, 0, 0.7058824)
+
+[node name="LevelSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="B" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fhsqj")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -175.0
+offset_top = -35.0
+offset_right = 175.0
+offset_bottom = 115.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.90588236, 0.5921569, 0, 1)
+text = "Select Level"
+label_settings = SubResource("LabelSettings_k0e2r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level1" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 120.0
+offset_right = 135.0
+offset_bottom = 220.0
+texture_normal = ExtResource("3_aeinr")
+texture_pressed = ExtResource("4_sp7b5")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Level1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level
+1"
+label_settings = ExtResource("5_0dma7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 120.0
+offset_right = 355.0
+offset_bottom = 220.0
+texture_normal = ExtResource("3_aeinr")
+texture_pressed = ExtResource("4_sp7b5")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Level2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level
+2"
+label_settings = ExtResource("5_0dma7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level3" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 120.0
+offset_right = 575.0
+offset_bottom = 220.0
+texture_normal = ExtResource("3_aeinr")
+texture_pressed = ExtResource("4_sp7b5")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Level3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level
+3"
+label_settings = ExtResource("5_0dma7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 280.0
+offset_right = 620.0
+offset_bottom = 320.0
+texture_normal = ExtResource("3_aeinr")
+texture_pressed = ExtResource("4_sp7b5")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+label_settings = ExtResource("5_0dma7")
+horizontal_alignment = 1
+vertical_alignment = 1
