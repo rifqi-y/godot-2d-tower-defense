@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://bhjxr3a65rxai"]
+[gd_scene load_steps=8 format=4 uid="uid://bhjxr3a65rxai"]
 
 [ext_resource type="Texture2D" uid="uid://dlw333foyu4au" path="res://Assets/Environment/Tilesets/punyworld-overworld-tileset.png" id="1_u0eab"]
 
@@ -162,6 +162,12 @@ _data = {
 }
 point_count = 12
 
+[sub_resource type="Curve2D" id="Curve2D_u0eab"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -9, 215, -9.743255, -0.78999364, 9.743255, 0.78999364, 94, 217, 0, 4.4766307, 0, -4.4766307, 105, 203, -0.2633312, 8.953261, 0.2633312, -8.953261, 105, 132, -8.68993, -1.8433185, 8.68993, 1.8433185, 116, 119, -10.796579, 0, 10.796579, 0, 365, 121, 0, -14.483216, 0, 14.483216, 376, 139, -1.0533248, -10.533248, 1.0533248, 10.533248, 375, 234, -5.7932863, 4.2132993, 5.7932863, -4.2132993, 394, 251, -16.326534, 1.0533248, 16.326534, -1.0533248, 474, 249, 2.633312, 9.479923, -2.633312, -9.479923, 490, 231, -0.2633312, 15.536541, 0.2633312, -15.536541, 488, 148, 0, 0, 0, 0, 507, 136, -18.169853, -0.2633312, 18.169853, 0.2633312, 557, 136, 0.2633312, 10.796579, -0.2633312, -10.796579, 569, 114, 0, 0, 0, 0, 569, -10)
+}
+point_count = 16
+
 [node name="Map2" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -174,5 +180,8 @@ tile_set = SubResource("TileSet_frbht")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_rcsii")
+
+[node name="Path2D2" type="Path2D" parent="."]
+curve = SubResource("Curve2D_u0eab")
 
 [node name="Tower1" type="Node2D" parent="."]

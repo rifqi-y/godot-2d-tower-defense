@@ -67,11 +67,19 @@ func retrieve_wave_data():
 	return wave_data
 
 func spawn_enemies(wave_data):
+	var paths = [
+		map_node1.get_node("Path2D"),
+		map_node1.get_node("Path2D2")
+	]
+	
 	for i in wave_data:
 		var new_enemy = load("res://Scenes/Enemies/" + i[0] + ".tscn").instantiate()
 		new_enemy.connect("base_damage", on_base_damage)
 		new_enemy.connect("enemy_killed", on_enemy_killed)
-		map_node1.get_node("Path2D").add_child(new_enemy, true)
+		
+		var path = paths.pick_random()
+		
+		path.add_child(new_enemy, true)
 		
 		spawned_enemies += 1
 		enemies_alive += 1

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c81gtgr4l1dpn"]
 
-[ext_resource type="Texture2D" uid="uid://7fkrcvdn3pnj" path="res://Assets/UI/Arts/BackGround.png" id="1_ctc6w"]
+[ext_resource type="Texture2D" uid="uid://dcb778d6nwa6r" path="res://Assets/UI/Arts/MainMenuBG.png" id="1_15g01"]
 [ext_resource type="Texture2D" uid="uid://bwwwc0tgu45ow" path="res://Assets/UI/Buttons/Buttons1.png" id="2_iyrik"]
 [ext_resource type="Texture2D" uid="uid://cm2d7bfj3xrn2" path="res://Assets/UI/Buttons/Buttons2.png" id="3_15g01"]
 [ext_resource type="LabelSettings" uid="uid://tiyan25aa4gb" path="res://Assets/Fonts/kf_40_01.tres" id="4_iyrik"]
@@ -22,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ctc6w")
+texture = ExtResource("1_15g01")
 expand_mode = 2
 stretch_mode = 6
 
@@ -31,8 +31,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -82.5
-offset_bottom = 82.5
+offset_top = -50.0
+offset_bottom = 115.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 50
@@ -43,8 +43,9 @@ theme_override_constants/margin_bottom = 50
 [node name="VB" type="VBoxContainer" parent="M"]
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
-size_flags_horizontal = 8
-theme_override_constants/separation = 50
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Play" type="TextureButton" parent="M/VB"]
@@ -60,6 +61,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -2.5
+offset_bottom = -2.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Play"
@@ -88,7 +91,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Control" type="Control" parent="M/VB"]
-custom_minimum_size = Vector2(25, 25)
+custom_minimum_size = Vector2(25, 70)
 layout_mode = 2
 mouse_filter = 2
 
@@ -113,6 +116,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 25.0
 offset_top = 16.0
