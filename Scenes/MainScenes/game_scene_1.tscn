@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2ahykk0dhu42"]
+[gd_scene load_steps=14 format=3 uid="uid://b2ahykk0dhu42"]
 
 [ext_resource type="Script" uid="uid://chltkd1hm5ujm" path="res://Scenes/MainScenes/game_scene_1.gd" id="1_3k5ul"]
 [ext_resource type="PackedScene" uid="uid://bhjxr3a65rxai" path="res://map_2.tscn" id="1_nliq5"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cq7f2008nuycl" path="res://Assets/Icons/Pause1.png" id="8_l6vud"]
 [ext_resource type="Texture2D" uid="uid://dxppvrdvy78vs" path="res://Assets/Icons/fastForward.png" id="9_vq0l7"]
 [ext_resource type="Texture2D" uid="uid://dwr4n08rcygfl" path="res://Assets/Icons/home.png" id="10_oxown"]
+[ext_resource type="Texture2D" uid="uid://ok4rh8i4j54u" path="res://Assets/Icons/next.png" id="11_tbmxq"]
 [ext_resource type="Texture2D" uid="uid://3qhujhlrfumf" path="res://Assets/UI/HPbar.jpg" id="11_xidcs"]
 
 [node name="GameScene1" type="Node2D"]
@@ -99,8 +100,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -204.0
+offset_left = -255.0
 offset_top = -100.0
+offset_right = 53.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
@@ -124,6 +126,10 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 texture_normal = ExtResource("9_vq0l7")
 stretch_mode = 0
+
+[node name="TextureButton" type="TextureButton" parent="UI/HUD/GameControl"]
+layout_mode = 2
+texture_normal = ExtResource("11_tbmxq")
 
 [node name="InfoBar" type="ColorRect" parent="UI"]
 self_modulate = Color(0, 0, 0, 0.47058824)
@@ -188,3 +194,4 @@ layout_mode = 2
 
 [connection signal="pressed" from="UI/HUD/GameControl/PausePlay" to="UI" method="_on_pause_play_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControl/FastForward" to="UI" method="_on_fast_forward_pressed"]
+[connection signal="pressed" from="UI/HUD/GameControl/TextureButton" to="." method="_on_texture_button_pressed"]

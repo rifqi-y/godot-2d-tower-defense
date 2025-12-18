@@ -63,4 +63,3 @@ func update_health_bar(base_health):
 		hp_bar.set_tint_progress("e1be32")
 	else:
 		hp_bar.set_tint_progress("e11e1e")
-	

@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://o1alynlpv0vk"]
+
+[ext_resource type="Script" uid="uid://cmpqavkd1obnt" path="res://Scenes/UIScenes/settings.gd" id="1_1au74"]
+[ext_resource type="Texture2D" uid="uid://dcb778d6nwa6r" path="res://Assets/UI/Arts/MainMenuBG.png" id="1_pgwfu"]
+[ext_resource type="PackedScene" uid="uid://cxfa38mpbdpoj" path="res://Scenes/Sounds/volume_slider.tscn" id="2_3y1qx"]
+[ext_resource type="LabelSettings" uid="uid://tiyan25aa4gb" path="res://Assets/Fonts/kf_40_01.tres" id="3_4vt10"]
+[ext_resource type="Texture2D" uid="uid://bwwwc0tgu45ow" path="res://Assets/UI/Buttons/Buttons1.png" id="7_4ckan"]
+[ext_resource type="Texture2D" uid="uid://cm2d7bfj3xrn2" path="res://Assets/UI/Buttons/Buttons2.png" id="8_pxtn1"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1au74")
+
+[node name="B" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_pgwfu")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -98.0
+offset_right = 100.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Master Volume"
+label_settings = ExtResource("3_4vt10")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="master" parent="VBoxContainer2" instance=ExtResource("2_3y1qx")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="Label2" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "Music Volume"
+label_settings = ExtResource("3_4vt10")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="music" parent="VBoxContainer2" instance=ExtResource("2_3y1qx")]
+layout_mode = 2
+bus_name = "music"
+
+[node name="Label3" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+text = "SFX Volume"
+label_settings = ExtResource("3_4vt10")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sfx" parent="VBoxContainer2" instance=ExtResource("2_3y1qx")]
+layout_mode = 2
+bus_name = "sfx"
+
+[node name="Control" type="Control" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+
+[node name="Back" type="TextureButton" parent="VBoxContainer2"]
+modulate = Color(1, 1, 1, 0.73333335)
+custom_minimum_size = Vector2(150, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("7_4ckan")
+texture_pressed = ExtResource("8_pxtn1")
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="VBoxContainer2/Back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+label_settings = ExtResource("3_4vt10")
+horizontal_alignment = 1
+vertical_alignment = 1

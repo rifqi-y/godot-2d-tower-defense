@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://caiblvba7u7vv"]
+[gd_scene load_steps=7 format=3 uid="uid://caiblvba7u7vv"]
 
 [ext_resource type="Script" uid="uid://c8ksmislcvnav" path="res://Scenes/UIScenes/splash_screen_manager.gd" id="1_7hwf6"]
 [ext_resource type="Texture2D" uid="uid://d2oq45ph6jcbf" path="res://Assets/UI/Arts/SplashScreen.png" id="2_7hwf6"]
+[ext_resource type="Texture2D" uid="uid://oufknwchxo05" path="res://Assets/CutScene/opening.png" id="3_mqdru"]
+[ext_resource type="Texture2D" uid="uid://dm7ls1j5nb0ba" path="res://Assets/CutScene/stage1.png" id="4_f3hun"]
+[ext_resource type="Texture2D" uid="uid://br22ryyt1anet" path="res://Assets/CutScene/stage2.png" id="5_jq26o"]
+[ext_resource type="Texture2D" uid="uid://clth5a1xkixiq" path="res://Assets/CutScene/stage3.png" id="6_obc3i"]
 
 [node name="SplashScreenManager" type="Control"]
 layout_mode = 3
@@ -20,7 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0018410678, 0.0018410682, 0.0018410678, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -37,3 +41,31 @@ layout_mode = 2
 texture = ExtResource("2_7hwf6")
 expand_mode = 3
 stretch_mode = 5
+
+[node name="Opening" type="TextureRect" parent="CenterContainer"]
+modulate = Color(1, 1, 1, 0.48235294)
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 2
+texture = ExtResource("3_mqdru")
+expand_mode = 5
+
+[node name="Stage1" type="TextureRect" parent="CenterContainer"]
+modulate = Color(1, 1, 1, 0.48235294)
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 2
+texture = ExtResource("4_f3hun")
+expand_mode = 5
+
+[node name="Stage2" type="TextureRect" parent="CenterContainer"]
+modulate = Color(1, 1, 1, 0.48235294)
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 2
+texture = ExtResource("5_jq26o")
+expand_mode = 5
+
+[node name="Stage3" type="TextureRect" parent="CenterContainer"]
+modulate = Color(1, 1, 1, 0.48235294)
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 2
+texture = ExtResource("6_obc3i")
+expand_mode = 5

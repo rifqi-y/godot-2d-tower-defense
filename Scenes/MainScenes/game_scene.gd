@@ -13,7 +13,7 @@ var base_health = 100
 var base_money = 100
 
 var spawned_enemies = 0
-var enemies_alive = 0
+var killed_enemies = 0
 var current_wave = 0
 var enemies_in_wave = 0
 var total_wave = 3
@@ -62,8 +62,8 @@ func retrieve_wave_data():
 	
 	var wave_data = [
 		["red_spirit", 0.7], ["red_spirit", 0.7],["red_spirit", 0.7], 
-		["red_spirit", 5.0], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7],
-		["red_spirit", 5.0], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7]
+		["red_spirit", 15.0], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7],
+		["red_spirit", 15.0], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7]
 	]
 	
 	current_wave += 1
@@ -78,8 +78,7 @@ func spawn_enemies(wave_data):
 		map_node.get_node("Path2D").add_child(new_enemy, true)
 		
 		spawned_enemies += 1
-		enemies_alive += 1
-		print(spawned_enemies, enemies_alive)
+		print(spawned_enemies)
 		await(get_tree().create_timer(i[1]).timeout)
 
 ##
@@ -139,12 +138,12 @@ func on_base_damage(damage):
 	#if base_health < 21:
 		#preload("res://Scenes/UIScenes/main_menu.tscn")
 	
-	enemies_alive -= 1
-	print(enemies_alive)
+	killed_enemies += 1
+	print(killed_enemies)
 	
 	if base_health <= 0:
 		emit_signal("game_finished", false)
-	elif enemies_alive <= 0 and spawned_enemies == enemies_in_wave:
+	elif killed_enemies == enemies_in_wave and spawned_enemies == enemies_in_wave:
 		await(get_tree().create_timer(0.5).timeout)
 		emit_signal("game_finished", true)
 	else:
@@ -157,9 +156,13 @@ func on_enemy_killed(reward):
 	base_money += reward
 	update_currency_label()
 	
-	enemies_alive -= 1
-	print(enemies_alive)
+	killed_enemies += 1
+	print(killed_enemies)
 	
-	if spawned_enemies == enemies_in_wave and enemies_alive <= 0:
-		await(get_tree().create_timer(0.5).timeout)
+	if spawned_enemies == enemies_in_wave and killed_enemies == enemies_in_wave:
+		await(get_tree().create_timer(1.0).timeout)
 		emit_signal("game_finished", true)
+
+
+func _on_end_game_pressed() -> void:
+	emit_signal("game_finished", false)

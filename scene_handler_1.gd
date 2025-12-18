@@ -7,6 +7,7 @@ const MAIN_MENU = preload("res://Scenes/UIScenes/main_menu.tscn")
 const RESULT_SCREEN = preload("res://Scenes/UIScenes/result_scene.tscn")
 const LEVEL_SELECTION = preload("res://Scenes/UIScenes/level_selection.tscn")
 const SPLASH_SCREEN = preload("res://Scenes/UIScenes/splash_screen_manager.tscn")
+const SETTINGS_SCREEN = preload("res://Scenes/UIScenes/settings.tscn")
 
 var game_instance
 var game_instance1
@@ -21,8 +22,10 @@ func load_main_menu():
 	var main_menu_node = get_node("MainMenu")
 	
 	var play_button = main_menu_node.get_node("M/VB/Play")
+	var settings_button = main_menu_node.get_node("M/VB/Settings")
 	var quit_button = main_menu_node.get_node("M/VB/Quit")
 	
+	settings_button.pressed.connect(on_settings_pressed)
 	play_button.pressed.connect(on_play_pressed)
 	quit_button.pressed.connect(on_quit_pressed)
 	
@@ -36,11 +39,20 @@ func on_play_pressed() -> void:
 	
 func on_quit_pressed() -> void:
 	get_tree().quit() 
+	
+func on_settings_pressed() -> void:
+	get_node("MainMenu").queue_free()
+	
+	show_settings()
 
 func unload_game(result):
 	active_game.queue_free()
 	if MusicController.level1_bgm.playing:
 		MusicController.level1_bgm_stop()
+	elif MusicController.level2_bgm.playing:
+		MusicController.level2_bgm_stop()
+	elif MusicController.level3_bgm.playing:
+		MusicController.level3_bgm_stop()
 
 	if result:
 		show_result_screen("Victory!", true)
@@ -55,7 +67,9 @@ func unload_game(result):
 	
 func load_level1():
 	remove_level_selection_scene()
-		
+	
+	await show_stage1_cutscene()
+	
 	MusicController.level1_bgm_play()
 	active_game = GAME_SCENE.instantiate()
 	active_game.connect("game_finished", unload_game)
@@ -65,6 +79,9 @@ func load_level1():
 func load_level2():
 	remove_level_selection_scene()
 	
+	await show_stage2_cutscene()
+	
+	MusicController.level2_bgm_play()
 	active_game = GAME_SCENE1.instantiate()
 	active_game.connect("game_finished", unload_game)
 	add_child(active_game)
@@ -73,10 +90,24 @@ func load_level2():
 func load_level3():
 	remove_level_selection_scene()
 	
+	await show_stage3_cutscene()
+	
+	MusicController.level3_bgm_play()
 	active_game = GAME_SCENE2.instantiate()
 	active_game.connect("game_finished", unload_game)
 	add_child(active_game)
 	last_played_level = 3
+	
+func show_settings():
+	if not MusicController.main_menu_bgm.playing:
+		MusicController.mainmenu_bgm_play()
+		
+	var settings_scene = SETTINGS_SCREEN.instantiate()
+	add_child(settings_scene)
+	
+	var back_button = settings_scene.get_node("VBoxContainer/Back")
+	
+	back_button.pressed.connect(on_main_menu_pressed)
 	
 func show_level_selection():
 	if not MusicController.main_menu_bgm.playing:
@@ -160,16 +191,109 @@ func fade() -> void:
 	add_child(splash_screen_node)
 	
 	var splash_screen = splash_screen_node.get_node("CenterContainer/SplashScreen")
+	var opening_scene = splash_screen_node.get_node("CenterContainer/Opening")
+	var stage1_scene = splash_screen_node.get_node("CenterContainer/Stage1")
+	var stage2_scene = splash_screen_node.get_node("CenterContainer/Stage2")
+	var stage3_scene = splash_screen_node.get_node("CenterContainer/Stage3")
 	
 	splash_screen.modulate.a = 0.0
+	opening_scene.modulate.a = 0.0
+	stage1_scene.modulate.a = 0.0
+	stage2_scene.modulate.a = 0.0
+	stage3_scene.modulate.a = 0.0
+	
 	var tween = self.create_tween()
 	tween.tween_interval(0.5)
 	tween.tween_property(splash_screen, "modulate:a", 1.0, 1.5)
 	tween.tween_interval(1.5)
 	tween.tween_property(splash_screen, "modulate:a", 0.0, 1.5)
 	tween.tween_interval(1.5)
+	
+	tween.tween_interval(0.5)
+	tween.tween_property(opening_scene, "modulate:a", 1.0, 1.5)
+	tween.tween_interval(5.0)
+	tween.tween_property(opening_scene, "modulate:a", 0.0, 1.5)
+	tween.tween_interval(1.5)	
 	await tween.finished
 	
 	splash_screen_node.queue_free()
 	
 	load_main_menu()
+
+func show_stage1_cutscene() -> void:
+	var splash_screen_node = SPLASH_SCREEN.instantiate()
+	add_child(splash_screen_node)
+	
+	var splash_screen = splash_screen_node.get_node("CenterContainer/SplashScreen")
+	var opening_scene = splash_screen_node.get_node("CenterContainer/Opening")
+	var stage1_scene = splash_screen_node.get_node("CenterContainer/Stage1")
+	var stage2_scene = splash_screen_node.get_node("CenterContainer/Stage2")
+	var stage3_scene = splash_screen_node.get_node("CenterContainer/Stage3")
+	
+	splash_screen.modulate.a = 0.0
+	opening_scene.modulate.a = 0.0
+	stage1_scene.modulate.a = 0.0
+	stage2_scene.modulate.a = 0.0
+	stage3_scene.modulate.a = 0.0
+	
+	var tween = self.create_tween()
+	tween.tween_interval(0.5)
+	tween.tween_property(stage1_scene, "modulate:a", 1.0, 1.5)
+	tween.tween_interval(5.0)
+	tween.tween_property(stage1_scene, "modulate:a", 0.0, 1.5)
+	tween.tween_interval(1.5)	
+	await tween.finished
+	
+	splash_screen_node.queue_free()
+
+func show_stage2_cutscene() -> void:
+	var splash_screen_node = SPLASH_SCREEN.instantiate()
+	add_child(splash_screen_node)
+	
+	var splash_screen = splash_screen_node.get_node("CenterContainer/SplashScreen")
+	var opening_scene = splash_screen_node.get_node("CenterContainer/Opening")
+	var stage1_scene = splash_screen_node.get_node("CenterContainer/Stage1")
+	var stage2_scene = splash_screen_node.get_node("CenterContainer/Stage2")
+	var stage3_scene = splash_screen_node.get_node("CenterContainer/Stage3")
+	
+	splash_screen.modulate.a = 0.0
+	opening_scene.modulate.a = 0.0
+	stage1_scene.modulate.a = 0.0
+	stage2_scene.modulate.a = 0.0
+	stage3_scene.modulate.a = 0.0
+	
+	var tween = self.create_tween()
+	tween.tween_interval(0.5)
+	tween.tween_property(stage2_scene, "modulate:a", 1.0, 1.5)
+	tween.tween_interval(5.0)
+	tween.tween_property(stage2_scene, "modulate:a", 0.0, 1.5)
+	tween.tween_interval(1.5)	
+	await tween.finished
+	
+	splash_screen_node.queue_free()
+
+func show_stage3_cutscene() -> void:
+	var splash_screen_node = SPLASH_SCREEN.instantiate()
+	add_child(splash_screen_node)
+	
+	var splash_screen = splash_screen_node.get_node("CenterContainer/SplashScreen")
+	var opening_scene = splash_screen_node.get_node("CenterContainer/Opening")
+	var stage1_scene = splash_screen_node.get_node("CenterContainer/Stage1")
+	var stage2_scene = splash_screen_node.get_node("CenterContainer/Stage2")
+	var stage3_scene = splash_screen_node.get_node("CenterContainer/Stage3")
+	
+	splash_screen.modulate.a = 0.0
+	opening_scene.modulate.a = 0.0
+	stage1_scene.modulate.a = 0.0
+	stage2_scene.modulate.a = 0.0
+	stage3_scene.modulate.a = 0.0
+	
+	var tween = self.create_tween()
+	tween.tween_interval(0.5)
+	tween.tween_property(stage3_scene, "modulate:a", 1.0, 1.5)
+	tween.tween_interval(5.0)
+	tween.tween_property(stage3_scene, "modulate:a", 0.0, 1.5)
+	tween.tween_interval(1.5)	
+	await tween.finished
+	
+	splash_screen_node.queue_free()
