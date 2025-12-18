@@ -1,9 +1,5 @@
 # Defense of the Village — Godot 4 (2D Tower Defense)
 
-<p align="center">
-  <img src="Assets/logo.png" alt="Defense of the Village logo" width="480">
-</p>
-
 A simple, fast-paced 2D tower defense game made with Godot 4. Place towers, survive enemy waves, and protect the village crystal.
 
 ## Gameplay
