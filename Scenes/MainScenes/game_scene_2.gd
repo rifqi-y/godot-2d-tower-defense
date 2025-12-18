@@ -147,6 +147,9 @@ func verify_and_build():
 		else:
 			Notification.show_NEM_notif()
 			print("Not enough money!")
+			
+	else:
+		Notification.show_IL_notif()
 		
 func on_base_damage(damage):
 	base_health -= damage
