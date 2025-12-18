@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c5vtd3n5uslqq"]
 
-[ext_resource type="Texture2D" uid="uid://7fkrcvdn3pnj" path="res://Assets/UI/Arts/BackGround.png" id="1_kw7ms"]
+[ext_resource type="Texture2D" uid="uid://dvtsu38cmdac1" path="res://Assets/UI/Arts/defeat.png" id="1_kw7ms"]
 [ext_resource type="FontFile" uid="uid://k2cew31qd006" path="res://Assets/Fonts/Kenney Pixel.ttf" id="2_vcwsa"]
 [ext_resource type="Texture2D" uid="uid://bwwwc0tgu45ow" path="res://Assets/UI/Buttons/Buttons1.png" id="3_ran38"]
 [ext_resource type="Texture2D" uid="uid://cm2d7bfj3xrn2" path="res://Assets/UI/Buttons/Buttons2.png" id="4_anef1"]
@@ -41,9 +41,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -175.0
-offset_top = 50.0
+offset_top = 20.0
 offset_right = 175.0
-offset_bottom = 200.0
+offset_bottom = 170.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.90588236, 0.5921569, 0, 1)
 text = "Victory"
@@ -55,9 +55,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(120, 35)
 layout_mode = 0
 offset_left = 265.0
-offset_top = 250.0
+offset_top = 175.0
 offset_right = 385.0
-offset_bottom = 290.0
+offset_bottom = 215.0
 texture_normal = ExtResource("3_ran38")
 texture_pressed = ExtResource("4_anef1")
 stretch_mode = 6
@@ -78,9 +78,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(120, 35)
 layout_mode = 0
 offset_left = 95.0
-offset_top = 250.0
+offset_top = 175.0
 offset_right = 215.0
-offset_bottom = 290.0
+offset_bottom = 215.0
 texture_normal = ExtResource("3_ran38")
 texture_pressed = ExtResource("4_anef1")
 stretch_mode = 6
@@ -101,9 +101,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(120, 35)
 layout_mode = 0
 offset_left = 440.0
-offset_top = 250.0
+offset_top = 175.0
 offset_right = 560.0
-offset_bottom = 290.0
+offset_bottom = 215.0
 texture_normal = ExtResource("3_ran38")
 texture_pressed = ExtResource("4_anef1")
 stretch_mode = 6

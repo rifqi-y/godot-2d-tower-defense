@@ -2,6 +2,7 @@ extends Node
 
 const GAME_SCENE = preload("res://Scenes/MainScenes/game_scene.tscn")
 const GAME_SCENE1 = preload("res://Scenes/MainScenes/game_scene_1.tscn")
+const GAME_SCENE2 = preload("res://Scenes/MainScenes/game_scene_2.tscn")
 const MAIN_MENU = preload("res://Scenes/UIScenes/main_menu.tscn")
 const RESULT_SCREEN = preload("res://Scenes/UIScenes/result_scene.tscn")
 const LEVEL_SELECTION = preload("res://Scenes/UIScenes/level_selection.tscn")
@@ -9,6 +10,7 @@ const SPLASH_SCREEN = preload("res://Scenes/UIScenes/splash_screen_manager.tscn"
 
 var game_instance
 var game_instance1
+var game_instance2
 var active_game
 var last_played_level
 
@@ -41,10 +43,10 @@ func unload_game(result):
 		MusicController.level1_bgm_stop()
 
 	if result:
-		show_result_screen("Victory!")
+		show_result_screen("Victory!", true)
 		MusicController.victory_sfx_play()
 	else:
-		show_result_screen("Defeat!")
+		show_result_screen("Defeat!", false)
 		MusicController.defeat_sfx_play()
 	
 	#var main_menu_instance = MAIN_MENU.instantiate()
@@ -68,6 +70,13 @@ func load_level2():
 	add_child(active_game)
 	last_played_level = 2
 	
+func load_level3():
+	remove_level_selection_scene()
+	
+	active_game = GAME_SCENE2.instantiate()
+	active_game.connect("game_finished", unload_game)
+	add_child(active_game)
+	last_played_level = 3
 	
 func show_level_selection():
 	if not MusicController.main_menu_bgm.playing:
@@ -79,17 +88,26 @@ func show_level_selection():
 	var back_button = level_selection_scene.get_node("Back")
 	var level1_button = level_selection_scene.get_node("Level1")
 	var level2_button = level_selection_scene.get_node("Level2")
+	var level3_button = level_selection_scene.get_node("Level3")
 	
 	back_button.pressed.connect(on_main_menu_pressed)
 	level1_button.pressed.connect(load_level1)
 	level2_button.pressed.connect(load_level2)
+	level3_button.pressed.connect(load_level3)
 
-func show_result_screen(msg):
+func show_result_screen(msg, is_victory):
 	var result_screen = RESULT_SCREEN.instantiate()
 	add_child(result_screen)
 	
 	var label = result_screen.get_node("Label")
 	label.text = msg
+	
+	var background = result_screen.get_node("B")
+	
+	if is_victory:
+		background.texture = load("res://Assets/UI/Arts/victory.png")
+	else:
+		background.texture = load("res://Assets/UI/Arts/defeat.png")
 	
 	var replay_button = result_screen.get_node("Replay")
 	var main_menu_button = result_screen.get_node("MainMenu")
@@ -110,6 +128,8 @@ func on_replay_pressed():
 		load_level1()
 	elif last_played_level == 2:
 		load_level2()
+	elif last_played_level == 3:
+		load_level3()
 	
 func remove_result_scene():
 	var result_scene = get_node("ResultScene")
