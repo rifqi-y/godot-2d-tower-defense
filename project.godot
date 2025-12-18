@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 
 GameData="*res://Singletons/GameData.gd"
 MusicController="*res://Scenes/Sounds/music_controller.tscn"
+Notification="*res://Scenes/Notification/notification.tscn"
 
 [display]
 

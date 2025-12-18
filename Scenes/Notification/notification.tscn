@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://cckudw8kq2b8"]
+
+[ext_resource type="Script" uid="uid://bc3o78oy0oy0q" path="res://notification.gd" id="1_4278x"]
+[ext_resource type="LabelSettings" uid="uid://tiyan25aa4gb" path="res://Assets/Fonts/kf_40_01.tres" id="2_3a8pf"]
+
+[node name="notification" type="CanvasLayer"]
+script = ExtResource("1_4278x")
+
+[node name="NotEnoughMoney" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="NotEnoughMoney"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Not enough money!"
+label_settings = ExtResource("2_3a8pf")
+horizontal_alignment = 1
+vertical_alignment = 1

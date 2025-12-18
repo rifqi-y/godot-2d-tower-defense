@@ -105,7 +105,7 @@ func show_settings():
 	var settings_scene = SETTINGS_SCREEN.instantiate()
 	add_child(settings_scene)
 	
-	var back_button = settings_scene.get_node("VBoxContainer/Back")
+	var back_button = settings_scene.get_node("VBoxContainer2/Back")
 	
 	back_button.pressed.connect(on_main_menu_pressed)
 	

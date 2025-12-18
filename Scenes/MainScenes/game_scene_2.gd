@@ -145,6 +145,7 @@ func verify_and_build():
 			update_currency_label()
 			
 		else:
+			Notification.show_NEM_notif()
 			print("Not enough money!")
 		
 func on_base_damage(damage):

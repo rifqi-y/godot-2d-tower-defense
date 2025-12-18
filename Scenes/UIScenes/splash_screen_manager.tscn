@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c8ksmislcvnav" path="res://Scenes/UIScenes/splash_screen_manager.gd" id="1_7hwf6"]
 [ext_resource type="Texture2D" uid="uid://d2oq45ph6jcbf" path="res://Assets/UI/Arts/SplashScreen.png" id="2_7hwf6"]
-[ext_resource type="Texture2D" uid="uid://oufknwchxo05" path="res://Assets/CutScene/opening.png" id="3_mqdru"]
+[ext_resource type="Texture2D" uid="uid://bg154hg2fv7r0" path="res://Assets/CutScene/opening1.png" id="3_jq26o"]
 [ext_resource type="Texture2D" uid="uid://dm7ls1j5nb0ba" path="res://Assets/CutScene/stage1.png" id="4_f3hun"]
 [ext_resource type="Texture2D" uid="uid://br22ryyt1anet" path="res://Assets/CutScene/stage2.png" id="5_jq26o"]
 [ext_resource type="Texture2D" uid="uid://clth5a1xkixiq" path="res://Assets/CutScene/stage3.png" id="6_obc3i"]
@@ -46,7 +46,7 @@ stretch_mode = 5
 modulate = Color(1, 1, 1, 0.48235294)
 custom_minimum_size = Vector2(640, 360)
 layout_mode = 2
-texture = ExtResource("3_mqdru")
+texture = ExtResource("3_jq26o")
 expand_mode = 5
 
 [node name="Stage1" type="TextureRect" parent="CenterContainer"]
