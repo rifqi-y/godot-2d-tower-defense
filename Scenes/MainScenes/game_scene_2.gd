@@ -63,7 +63,15 @@ func retrieve_wave_data():
 	if current_wave >= total_wave:
 		return []
 	
-	var wave_data = [["red_spirit", 0.7], ["red_spirit", 0.7],["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7]]
+	var wave_data = [
+		["red_spirit", 1.0], ["red_spirit", 1.0], ["red_spirit", 1.0], ["red_spirit", 1.0], ["red_spirit", 1.0],
+		["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7],
+		["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 5.0], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2],
+		["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6],
+		["red_spirit", 0.4], ["red_spirit", 0.4], ["red_spirit", 0.4], ["red_spirit", 0.4], ["red_spirit", 0.4], ["red_spirit", 0.4], ["red_spirit", 0.4], ["red_spirit", 0.4], ["red_spirit", 0.4], ["red_spirit", 0.4], ["red_spirit", 0.4], ["red_spirit", 0.4], ["red_spirit", 0.4], ["red_spirit", 0.4], ["red_spirit", 0.4],
+		["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5],
+		["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2], ["red_spirit", 0.2]
+		]
 	
 	current_wave += 1
 	enemies_in_wave = wave_data.size()

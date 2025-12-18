@@ -29,9 +29,12 @@ func _ready() -> void:
 	
 	for i in get_tree().get_nodes_in_group("build_button"):
 		i.pressed.connect(initiate_build_mode.bind(i.name))
-		
-	for enemy in map_node1.get_node("Path2D").get_children():
-		enemy.connect("enemy_killed", on_enemy_killed)
+	
+	var path_nodes = ["Path2D", "Path2D2"]
+	
+	for node in path_nodes:
+		for enemy in map_node1.get_node(node).get_children():
+			enemy.connect("enemy_killed", on_enemy_killed)
 	
 func _process(delta: float) -> void:
 	if build_mode:
@@ -60,7 +63,13 @@ func retrieve_wave_data():
 	if current_wave >= total_wave:
 		return []
 	
-	var wave_data = [["red_spirit", 0.7], ["red_spirit", 0.7],["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7]]
+	var wave_data = [
+		["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], 
+		["red_spirit", 15.0], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 3.0], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7], ["red_spirit", 0.7],
+		["red_spirit", 15.0], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5], ["red_spirit", 0.5],
+		["red_spirit", 15.0], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6], ["red_spirit", 0.6],
+		["red_spirit", 20.0], ["red_spirit", 0.3], ["red_spirit", 0.3], ["red_spirit", 0.3], ["red_spirit", 0.3], ["red_spirit", 0.3], ["red_spirit", 0.3], ["red_spirit", 0.3], ["red_spirit", 0.3], ["red_spirit", 0.3], ["red_spirit", 0.3], ["red_spirit", 0.3], ["red_spirit", 0.3], ["red_spirit", 0.3], ["red_spirit", 0.3], ["red_spirit", 0.3]
+	]
 	
 	current_wave += 1
 	enemies_in_wave = wave_data.size()
