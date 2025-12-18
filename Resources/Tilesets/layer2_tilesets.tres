@@ -1,0 +1,67 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://b2eta6f5hxc2b"]
+
+[ext_resource type="Texture2D" uid="uid://dlw333foyu4au" path="res://Assets/Environment/Tilesets/punyworld-overworld-tileset.png" id="1_b5m7w"]
+[ext_resource type="Texture2D" uid="uid://bgoxc5w3xs2co" path="res://Assets/Environment/Tilesets/Obstructed1.png" id="2_po0bm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n2bu5"]
+texture = ExtResource("1_b5m7w")
+15:1/0 = 0
+15:1/0/terrain_set = 0
+15:1/0/terrain = 0
+15:1/0/terrains_peering_bit/bottom_side = 0
+15:1/0/terrains_peering_bit/top_side = 0
+16:0/0 = 0
+16:0/0/terrain_set = 0
+16:0/0/terrain = 0
+16:0/0/terrains_peering_bit/right_side = 0
+16:0/0/terrains_peering_bit/bottom_side = 0
+18:0/0 = 0
+18:0/0/terrain_set = 0
+18:0/0/terrain = 0
+18:0/0/terrains_peering_bit/bottom_side = 0
+18:0/0/terrains_peering_bit/left_side = 0
+18:2/0 = 0
+18:2/0/terrain_set = 0
+18:2/0/terrain = 0
+18:2/0/terrains_peering_bit/left_side = 0
+18:2/0/terrains_peering_bit/top_side = 0
+16:2/0 = 0
+16:2/0/terrain_set = 0
+16:2/0/terrain = 0
+16:2/0/terrains_peering_bit/right_side = 0
+16:2/0/terrains_peering_bit/top_side = 0
+17:3/0 = 0
+17:3/0/terrain_set = 0
+17:3/0/terrain = 0
+17:3/0/terrains_peering_bit/right_side = 0
+17:3/0/terrains_peering_bit/left_side = 0
+8:7/0 = 0
+8:8/0 = 0
+8:9/0 = 0
+0:7/size_in_atlas = Vector2i(3, 3)
+0:7/0 = 0
+3:7/size_in_atlas = Vector2i(3, 3)
+3:7/0 = 0
+6:7/size_in_atlas = Vector2i(2, 3)
+6:7/0 = 0
+20:4/0 = 0
+22:35/size_in_atlas = Vector2i(2, 2)
+22:35/0 = 0
+16:1/0 = 0
+17:0/0 = 0
+17:2/0 = 0
+18:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fpksy"]
+texture = ExtResource("2_po0bm")
+1:0/0 = 0
+1:0/0/custom_data_0 = true
+
+[resource]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+custom_data_layer_0/name = "buildable"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_n2bu5")
+sources/1 = SubResource("TileSetAtlasSource_fpksy")

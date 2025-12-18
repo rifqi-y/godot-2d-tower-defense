@@ -2,7 +2,7 @@ extends Node2D
 
 signal game_finished(result)
 
-var map_node
+var map_node1
 
 var build_mode = false
 var build_valid = false
@@ -23,14 +23,14 @@ var total_wave = 3
 
 func _ready() -> void:
 	print("Map ready: ", name)
-	map_node = get_node("Map1")
+	map_node1 = get_node("Map2")
 	
 	update_currency_label()
 	
 	for i in get_tree().get_nodes_in_group("build_button"):
 		i.pressed.connect(initiate_build_mode.bind(i.name))
 		
-	for enemy in map_node.get_node("Path2D").get_children():
+	for enemy in map_node1.get_node("Path2D").get_children():
 		enemy.connect("enemy_killed", on_enemy_killed)
 	
 func _process(delta: float) -> void:
@@ -71,7 +71,7 @@ func spawn_enemies(wave_data):
 		var new_enemy = load("res://Scenes/Enemies/" + i[0] + ".tscn").instantiate()
 		new_enemy.connect("base_damage", on_base_damage)
 		new_enemy.connect("enemy_killed", on_enemy_killed)
-		map_node.get_node("Path2D").add_child(new_enemy, true)
+		map_node1.get_node("Path2D").add_child(new_enemy, true)
 		
 		spawned_enemies += 1
 		enemies_alive += 1
@@ -91,11 +91,11 @@ func initiate_build_mode(tower_type):
 
 func update_tower_preview():
 	var mouse_position = get_global_mouse_position()
-	var local_mouse = map_node.get_node("TileMapLayer2").to_local(mouse_position)
-	var current_tile = map_node.get_node("TileMapLayer2").local_to_map(local_mouse)
-	var tile_position = map_node.get_node("TileMapLayer2").map_to_local(current_tile)
+	var local_mouse = map_node1.get_node("TileMapLayer4").to_local(mouse_position)
+	var current_tile = map_node1.get_node("TileMapLayer4").local_to_map(local_mouse)
+	var tile_position = map_node1.get_node("TileMapLayer4").map_to_local(current_tile)
 	
-	if map_node.get_node("TileMapLayer2").get_cell_source_id(current_tile) == -1:
+	if map_node1.get_node("TileMapLayer4").get_cell_source_id(current_tile) == -1:
 		get_node("UI").update_tower_preview(tile_position, "00b83cff")
 		build_valid = true
 		build_location = tile_position
@@ -120,8 +120,8 @@ func verify_and_build():
 			new_tower.built = true
 			new_tower.type = build_type
 			new_tower.category = GameData.tower_data[build_type]["category"]
-			map_node.get_node("Tower").add_child(new_tower, true)
-			map_node.get_node("TileMapLayer2").set_cell(build_tile, 0, Vector2i(1,0))
+			map_node1.get_node("Tower1").add_child(new_tower, true)
+			map_node1.get_node("TileMapLayer4").set_cell(build_tile, 0, Vector2i(1,0))
 			
 			base_money -= tower_cost
 			update_currency_label()

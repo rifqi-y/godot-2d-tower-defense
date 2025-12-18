@@ -1,12 +1,16 @@
 extends Node
 
 const GAME_SCENE = preload("res://Scenes/MainScenes/game_scene.tscn")
+const GAME_SCENE1 = preload("res://Scenes/MainScenes/game_scene_1.tscn")
 const MAIN_MENU = preload("res://Scenes/UIScenes/main_menu.tscn")
 const RESULT_SCREEN = preload("res://Scenes/UIScenes/result_scene.tscn")
 const LEVEL_SELECTION = preload("res://Scenes/UIScenes/level_selection.tscn")
 const SPLASH_SCREEN = preload("res://Scenes/UIScenes/splash_screen_manager.tscn")
 
 var game_instance
+var game_instance1
+var active_game
+var last_played_level
 
 func _ready() -> void:
 	fade()
@@ -32,7 +36,7 @@ func on_quit_pressed() -> void:
 	get_tree().quit() 
 
 func unload_game(result):
-	game_instance.queue_free()
+	active_game.queue_free()
 	if MusicController.level1_bgm.playing:
 		MusicController.level1_bgm_stop()
 
@@ -48,24 +52,37 @@ func unload_game(result):
 	#load_main_menu()
 	
 func load_level1():
-	if MusicController.main_menu_bgm.playing:
-		MusicController.mainmenu_bgm_stop()
+	remove_level_selection_scene()
 		
 	MusicController.level1_bgm_play()
-	game_instance = GAME_SCENE.instantiate()
-	game_instance.connect("game_finished", unload_game)
-	add_child(game_instance)
+	active_game = GAME_SCENE.instantiate()
+	active_game.connect("game_finished", unload_game)
+	add_child(active_game)
+	last_played_level = 1
+	
+func load_level2():
+	remove_level_selection_scene()
+	
+	active_game = GAME_SCENE1.instantiate()
+	active_game.connect("game_finished", unload_game)
+	add_child(active_game)
+	last_played_level = 2
 	
 	
 func show_level_selection():
+	if not MusicController.main_menu_bgm.playing:
+		MusicController.mainmenu_bgm_play()
+	
 	var level_selection_scene = LEVEL_SELECTION.instantiate()
 	add_child(level_selection_scene)
 	
 	var back_button = level_selection_scene.get_node("Back")
 	var level1_button = level_selection_scene.get_node("Level1")
+	var level2_button = level_selection_scene.get_node("Level2")
 	
 	back_button.pressed.connect(on_main_menu_pressed)
 	level1_button.pressed.connect(load_level1)
+	level2_button.pressed.connect(load_level2)
 
 func show_result_screen(msg):
 	var result_screen = RESULT_SCREEN.instantiate()
@@ -76,13 +93,23 @@ func show_result_screen(msg):
 	
 	var replay_button = result_screen.get_node("Replay")
 	var main_menu_button = result_screen.get_node("MainMenu")
+	var select_level_button = result_screen.get_node("SelectLevel")
 	
 	replay_button.pressed.connect(on_replay_pressed)
 	main_menu_button.pressed.connect(on_main_menu_pressed)
-	
+	select_level_button.pressed.connect(on_selectlevel_pressed)
+
+func on_selectlevel_pressed():
+	remove_result_scene()
+	show_level_selection()
+
 func on_replay_pressed():
 	remove_result_scene()
-	load_level1()
+	
+	if last_played_level == 1:
+		load_level1()
+	elif last_played_level == 2:
+		load_level2()
 	
 func remove_result_scene():
 	var result_scene = get_node("ResultScene")
@@ -93,6 +120,13 @@ func remove_result_scene():
 	if MusicController.victory_sfx.playing or MusicController.defeat_sfx.playing:
 		MusicController.victory_sfx_stop()
 		MusicController.defeat_sfx_stop()
+		
+func remove_level_selection_scene():
+	if has_node("LevelSelection"):
+		get_node("LevelSelection").queue_free()
+	
+	if MusicController.main_menu_bgm.playing:
+		MusicController.mainmenu_bgm_stop()
 	
 func on_main_menu_pressed():
 	remove_result_scene()
